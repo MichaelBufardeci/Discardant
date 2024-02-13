@@ -1,0 +1,198 @@
+[gd_scene load_steps=5 format=3 uid="uid://e35vgfqdl1fq"]
+
+[ext_resource type="Theme" uid="uid://1y7ptsr0yfcn" path="res://art/new_theme.tres" id="1_pqxqx"]
+[ext_resource type="Script" path="res://scripts/Options.gd" id="1_sdfg3"]
+[ext_resource type="AudioStream" uid="uid://d3v4d780q2d4f" path="res://art/Abstraction - Three Red Hearts - Rabbit Town.wav" id="3_fqso7"]
+[ext_resource type="AudioStream" uid="uid://d20te3d060af1" path="res://art/blipSelect.wav" id="4_uaahf"]
+
+[node name="Options" type="Node2D"]
+script = ExtResource("1_sdfg3")
+
+[node name="Options" type="RichTextLabel" parent="."]
+offset_left = 253.0
+offset_right = 388.0
+offset_bottom = 55.0
+mouse_filter = 2
+theme = ExtResource("1_pqxqx")
+theme_override_font_sizes/normal_font_size = 36
+text = "Options"
+
+[node name="TouchToggle" type="CheckButton" parent="."]
+offset_left = 5.0
+offset_top = 50.0
+offset_right = 150.0
+offset_bottom = 75.0
+theme = ExtResource("1_pqxqx")
+text = "Touchscreen"
+
+[node name="VolumeControl" type="Node2D" parent="."]
+position = Vector2(0, 100)
+
+[node name="Volume" type="HSlider" parent="VolumeControl"]
+offset_left = 125.0
+offset_right = 325.0
+offset_bottom = 25.0
+theme = ExtResource("1_pqxqx")
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="MasterVolume" type="RichTextLabel" parent="VolumeControl"]
+offset_left = 5.0
+offset_right = 130.0
+offset_bottom = 25.0
+theme = ExtResource("1_pqxqx")
+text = "Master Volume:"
+
+[node name="MusicControl" type="Node2D" parent="."]
+position = Vector2(0, 150)
+
+[node name="Music" type="HSlider" parent="MusicControl"]
+offset_left = 125.0
+offset_right = 325.0
+offset_bottom = 25.0
+theme = ExtResource("1_pqxqx")
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="MusicVolume" type="RichTextLabel" parent="MusicControl"]
+offset_left = 5.0
+offset_right = 130.0
+offset_bottom = 25.0
+theme = ExtResource("1_pqxqx")
+text = "Music Volume:"
+
+[node name="SFXControl" type="Node2D" parent="."]
+position = Vector2(0, 200)
+
+[node name="SFX" type="HSlider" parent="SFXControl"]
+offset_left = 125.0
+offset_right = 325.0
+offset_bottom = 25.0
+theme = ExtResource("1_pqxqx")
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="SFXVolume" type="RichTextLabel" parent="SFXControl"]
+offset_left = 5.0
+offset_right = 130.0
+offset_bottom = 25.0
+theme = ExtResource("1_pqxqx")
+text = "Sounds Volume:"
+
+[node name="ColorControl" type="Node2D" parent="."]
+position = Vector2(0, 250)
+
+[node name="Color" type="OptionButton" parent="ColorControl"]
+offset_left = 90.0
+offset_right = 165.0
+offset_bottom = 30.0
+theme = ExtResource("1_pqxqx")
+toggle_mode = false
+item_count = 4
+selected = 0
+allow_reselect = true
+popup/item_0/text = " Blue"
+popup/item_0/id = 0
+popup/item_1/text = " Red"
+popup/item_1/id = 1
+popup/item_2/text = " Green"
+popup/item_2/id = 2
+popup/item_3/text = " Black"
+popup/item_3/id = 3
+
+[node name="CardBack" type="RichTextLabel" parent="ColorControl"]
+offset_left = 5.0
+offset_right = 105.0
+offset_bottom = 25.0
+theme = ExtResource("1_pqxqx")
+text = "Card Back:"
+
+[node name="SpeedControl" type="Node2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="Speed" type="HSlider" parent="SpeedControl"]
+offset_left = 100.0
+offset_right = 300.0
+offset_bottom = 25.0
+theme = ExtResource("1_pqxqx")
+max_value = 1.0
+step = 0.1
+value = 0.6
+
+[node name="GameSpeed" type="RichTextLabel" parent="SpeedControl"]
+offset_left = 5.0
+offset_right = 130.0
+offset_bottom = 25.0
+theme = ExtResource("1_pqxqx")
+text = "Game Speed:"
+
+[node name="Delete" type="Node2D" parent="."]
+position = Vector2(5, 450)
+
+[node name="Button" type="Button" parent="Delete"]
+offset_right = 100.0
+offset_bottom = 27.0
+theme = ExtResource("1_pqxqx")
+theme_override_font_sizes/font_size = 18
+text = "Delete Save"
+
+[node name="Yes" type="Button" parent="Delete"]
+visible = false
+offset_left = 185.0
+offset_right = 235.0
+offset_bottom = 27.0
+theme = ExtResource("1_pqxqx")
+theme_override_font_sizes/font_size = 18
+text = "Yes"
+
+[node name="No" type="Button" parent="Delete"]
+visible = false
+offset_left = 125.0
+offset_right = 175.0
+offset_bottom = 27.0
+theme = ExtResource("1_pqxqx")
+theme_override_font_sizes/font_size = 18
+text = "No"
+
+[node name="Return" type="Button" parent="."]
+offset_left = 545.0
+offset_top = 450.0
+offset_right = 635.0
+offset_bottom = 477.0
+theme = ExtResource("1_pqxqx")
+theme_override_font_sizes/font_size = 18
+text = "Return"
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+z_as_relative = false
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.258824, 0.129412, 0.211765, 1)
+
+[node name="Music2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fqso7")
+bus = &"Music"
+
+[node name="Blip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uaahf")
+bus = &"SFX"
+
+[connection signal="toggled" from="TouchToggle" to="." method="_on_touch_toggle_toggled"]
+[connection signal="mouse_entered" from="VolumeControl/Volume" to="." method="_on_music_mouse_entered"]
+[connection signal="mouse_exited" from="VolumeControl/Volume" to="." method="_on_music_mouse_exited"]
+[connection signal="value_changed" from="VolumeControl/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="mouse_entered" from="MusicControl/Music" to="." method="_on_music_mouse_entered"]
+[connection signal="mouse_exited" from="MusicControl/Music" to="." method="_on_music_mouse_exited"]
+[connection signal="value_changed" from="MusicControl/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="SFXControl/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="item_selected" from="ColorControl/Color" to="." method="_on_color_item_selected"]
+[connection signal="value_changed" from="SpeedControl/Speed" to="." method="_on_speed_value_changed"]
+[connection signal="pressed" from="Delete/Button" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="Delete/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Delete/No" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

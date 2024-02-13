@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://doyo4kwr4n5cw"]
+
+[ext_resource type="Script" path="res://scripts/Draft.gd" id="1_uyggy"]
+[ext_resource type="Theme" uid="uid://1y7ptsr0yfcn" path="res://art/new_theme.tres" id="2_3e5sq"]
+[ext_resource type="AudioStream" uid="uid://d3v4d780q2d4f" path="res://art/Abstraction - Three Red Hearts - Rabbit Town.wav" id="3_dnlbj"]
+
+[node name="Draft" type="Node2D"]
+script = ExtResource("1_uyggy")
+
+[node name="Confirm" type="Button" parent="."]
+visible = false
+offset_left = 565.0
+offset_top = 450.0
+offset_right = 635.0
+offset_bottom = 475.0
+theme = ExtResource("2_3e5sq")
+theme_override_font_sizes/font_size = 18
+text = "Confirm"
+
+[node name="Title" type="RichTextLabel" parent="."]
+offset_left = 170.0
+offset_top = 5.0
+offset_right = 470.0
+offset_bottom = 40.0
+theme = ExtResource("2_3e5sq")
+theme_override_font_sizes/normal_font_size = 24
+text = "Choose Your Starting Deck"
+
+[node name="Clarification" type="RichTextLabel" parent="."]
+offset_left = 238.0
+offset_top = 35.0
+offset_right = 403.0
+offset_bottom = 70.0
+theme = ExtResource("2_3e5sq")
+theme_override_font_sizes/normal_font_size = 18
+text = "Each Row is a Deck"
+
+[node name="Arrow1" type="RichTextLabel" parent="."]
+offset_left = 1.0
+offset_top = 90.0
+offset_right = 26.0
+offset_bottom = 115.0
+theme = ExtResource("2_3e5sq")
+text = "1:"
+
+[node name="Arrow2" type="RichTextLabel" parent="."]
+offset_left = 1.0
+offset_top = 165.0
+offset_right = 26.0
+offset_bottom = 190.0
+theme = ExtResource("2_3e5sq")
+text = "2:"
+
+[node name="Deck2" type="ColorRect" parent="."]
+z_index = -1
+offset_top = 138.0
+offset_right = 640.0
+offset_bottom = 213.0
+mouse_filter = 2
+color = Color(0.494118, 0.145098, 0.32549, 1)
+
+[node name="Arrow3" type="RichTextLabel" parent="."]
+offset_left = 1.0
+offset_top = 240.0
+offset_right = 26.0
+offset_bottom = 265.0
+theme = ExtResource("2_3e5sq")
+text = "3:"
+
+[node name="Arrow4" type="RichTextLabel" parent="."]
+offset_left = 1.0
+offset_top = 315.0
+offset_right = 26.0
+offset_bottom = 340.0
+theme = ExtResource("2_3e5sq")
+text = "4:
+"
+
+[node name="Deck4" type="ColorRect" parent="."]
+z_index = -1
+offset_top = 288.0
+offset_right = 640.0
+offset_bottom = 363.0
+mouse_filter = 2
+color = Color(0.494118, 0.145098, 0.32549, 1)
+
+[node name="CardName" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 363.0
+offset_right = 635.0
+offset_bottom = 403.0
+mouse_filter = 2
+theme = ExtResource("2_3e5sq")
+theme_override_font_sizes/normal_font_size = 20
+
+[node name="CardDescription" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 407.0
+offset_right = 635.0
+offset_bottom = 484.0
+mouse_filter = 2
+theme = ExtResource("2_3e5sq")
+theme_override_font_sizes/normal_font_size = 16
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+z_as_relative = false
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.258824, 0.129412, 0.211765, 1)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dnlbj")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]

@@ -1,0 +1,162 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0el23qyko1p8"]
+
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_xtkbl"]
+[ext_resource type="PackedScene" uid="uid://khkpunjetmbp" path="res://scenes/player.tscn" id="2_buy0m"]
+[ext_resource type="Theme" uid="uid://1y7ptsr0yfcn" path="res://art/new_theme.tres" id="3_1lmgf"]
+[ext_resource type="PackedScene" uid="uid://mp52eslok0vq" path="res://scenes/opponent.tscn" id="3_5jn35"]
+[ext_resource type="Texture2D" uid="uid://btuovv8p226p5" path="res://art/chalice.png" id="3_44i6n"]
+[ext_resource type="Texture2D" uid="uid://e0y5trihavep" path="res://art/arrows.png" id="5_5cs81"]
+[ext_resource type="Texture2D" uid="uid://d3xlqyewa522m" path="res://art/coin.png" id="7_c05qf"]
+[ext_resource type="AudioStream" uid="uid://dm0qwdsemxfc6" path="res://art/Abstraction - Three Red Hearts - Connected.wav" id="7_ya4sd"]
+[ext_resource type="AudioStream" uid="uid://df33ykg6bo54q" path="res://art/pickupCoin.wav" id="8_14w7b"]
+[ext_resource type="AudioStream" uid="uid://dwoejivr2fys0" path="res://art/hitHurt.wav" id="9_g0pha"]
+[ext_resource type="AudioStream" uid="uid://clsbfekffjk88" path="res://art/jump.wav" id="10_gih33"]
+[ext_resource type="AudioStream" uid="uid://b6stbhfvfsv6v" path="res://art/click.wav" id="10_iln7c"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_xtkbl")
+
+[node name="Chalice" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+texture_filter = 1
+position = Vector2(320, 240)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_44i6n")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 262.0
+offset_top = 330.0
+offset_right = 377.0
+offset_bottom = 360.0
+theme = ExtResource("3_1lmgf")
+theme_override_font_sizes/font_size = 24
+
+[node name="Confirm" type="Button" parent="."]
+visible = false
+offset_left = 85.0
+offset_top = 365.0
+offset_right = 155.0
+offset_bottom = 390.0
+theme = ExtResource("3_1lmgf")
+theme_override_font_sizes/font_size = 18
+text = "Confirm"
+
+[node name="Options" type="Button" parent="."]
+offset_left = 170.0
+offset_top = 5.0
+offset_right = 240.0
+offset_bottom = 35.0
+theme = ExtResource("3_1lmgf")
+theme_override_font_sizes/font_size = 18
+text = "Options
+"
+
+[node name="Player" parent="." groups=["players"] instance=ExtResource("2_buy0m")]
+position = Vector2(25, 440)
+
+[node name="OpponentL" parent="." groups=["opponents", "players"] instance=ExtResource("3_5jn35")]
+position = Vector2(40, 25)
+rotation = 1.5708
+
+[node name="OpponentC" parent="." groups=["opponents", "players"] instance=ExtResource("3_5jn35")]
+position = Vector2(615, 40)
+rotation = 3.14159
+
+[node name="OpponentR" parent="." groups=["opponents", "players"] instance=ExtResource("3_5jn35")]
+position = Vector2(600, 455)
+rotation = 4.71239
+
+[node name="Arrows" type="Sprite2D" parent="."]
+position = Vector2(125, 45)
+texture = ExtResource("5_5cs81")
+vframes = 3
+
+[node name="TurnOrder" type="RichTextLabel" parent="Arrows"]
+offset_left = -32.5
+offset_top = -10.0
+offset_right = 32.5
+offset_bottom = 10.0
+theme = ExtResource("3_1lmgf")
+theme_override_font_sizes/normal_font_size = 12
+text = "Turn Order"
+
+[node name="CardText" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(400, 380)
+
+[node name="CardName" type="RichTextLabel" parent="CardText"]
+z_index = 3
+clip_contents = false
+offset_right = 160.0
+offset_bottom = 25.0
+theme = ExtResource("3_1lmgf")
+theme_override_font_sizes/normal_font_size = 16
+
+[node name="CardDescription" type="RichTextLabel" parent="CardText"]
+z_index = 3
+offset_top = 25.0
+offset_right = 160.0
+offset_bottom = 100.0
+theme = ExtResource("3_1lmgf")
+theme_override_font_sizes/normal_font_size = 12
+
+[node name="TextBackground" type="ColorRect" parent="CardText"]
+z_index = 1
+offset_right = 160.0
+offset_bottom = 100.0
+color = Color(0.494118, 0.145098, 0.32549, 1)
+
+[node name="Bank" type="Node2D" parent="."]
+position = Vector2(175, 50)
+
+[node name="Amount" type="RichTextLabel" parent="Bank"]
+offset_left = 10.0
+offset_right = 65.0
+offset_bottom = 30.0
+theme = ExtResource("3_1lmgf")
+theme_override_font_sizes/normal_font_size = 18
+text = "x"
+
+[node name="Coin" type="Sprite2D" parent="Bank"]
+texture_filter = 1
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+texture = ExtResource("7_c05qf")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+z_as_relative = false
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.258824, 0.129412, 0.211765, 1)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ya4sd")
+volume_db = 1.0
+bus = &"Music"
+
+[node name="Win" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_14w7b")
+bus = &"SFX"
+
+[node name="Lose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_g0pha")
+bus = &"SFX"
+
+[node name="Card" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_gih33")
+bus = &"SFX"
+
+[node name="Deck" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_iln7c")
+bus = &"SFX"
+
+[connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="card_drawn" from="Player" to="." method="_on_player_card_drawn"]
+[connection signal="card_played" from="OpponentL" to="." method="_on_opponent_card_played"]
+[connection signal="card_played" from="OpponentC" to="." method="_on_opponent_card_played"]
+[connection signal="card_played" from="OpponentR" to="." method="_on_opponent_card_played"]

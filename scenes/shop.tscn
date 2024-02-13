@@ -1,0 +1,218 @@
+[gd_scene load_steps=11 format=3 uid="uid://boq4da5ui6rdx"]
+
+[ext_resource type="Script" path="res://scripts/Shop.gd" id="1_nts7o"]
+[ext_resource type="PackedScene" uid="uid://d4g1bfp2j4tpl" path="res://scenes/card.tscn" id="3_g8v54"]
+[ext_resource type="Texture2D" uid="uid://d3xlqyewa522m" path="res://art/coin.png" id="4_06qyl"]
+[ext_resource type="Texture2D" uid="uid://d06ghlgdg3dsb" path="res://art/trash.png" id="5_y5lyk"]
+[ext_resource type="Texture2D" uid="uid://l7f13qasx8lj" path="res://art/deck.png" id="6_qi6f1"]
+[ext_resource type="AudioStream" uid="uid://d3v4d780q2d4f" path="res://art/Abstraction - Three Red Hearts - Rabbit Town.wav" id="7_omnam"]
+[ext_resource type="Theme" uid="uid://1y7ptsr0yfcn" path="res://art/new_theme.tres" id="7_v4c8v"]
+[ext_resource type="AudioStream" uid="uid://d20te3d060af1" path="res://art/blipSelect.wav" id="8_b22jm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq0mo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nsa1"]
+size = Vector2(50, 80)
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_nts7o")
+
+[node name="Confirm" type="Button" parent="."]
+visible = false
+offset_left = 75.0
+offset_top = 400.0
+offset_right = 145.0
+offset_bottom = 425.0
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/font_size = 18
+text = "Confirm"
+
+[node name="Shop" type="RichTextLabel" parent="."]
+offset_left = 277.0
+offset_right = 362.0
+offset_bottom = 55.0
+mouse_filter = 2
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/normal_font_size = 36
+text = "Shop"
+
+[node name="Common" parent="." groups=["card"] instance=ExtResource("3_g8v54")]
+position = Vector2(95, 150)
+scale = Vector2(2, 2)
+
+[node name="Coin" type="Sprite2D" parent="Common"]
+texture_filter = 1
+position = Vector2(-7.5, -50)
+texture = ExtResource("4_06qyl")
+
+[node name="Price" type="RichTextLabel" parent="Common"]
+offset_top = -55.0
+offset_right = 30.0
+offset_bottom = -25.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/normal_font_size = 18
+text = "x2"
+
+[node name="Uncommon" parent="." groups=["card"] instance=ExtResource("3_g8v54")]
+position = Vector2(245, 150)
+scale = Vector2(2, 2)
+
+[node name="Coin" type="Sprite2D" parent="Uncommon"]
+texture_filter = 1
+position = Vector2(-7.5, -50)
+texture = ExtResource("4_06qyl")
+
+[node name="Price" type="RichTextLabel" parent="Uncommon"]
+offset_top = -55.0
+offset_right = 30.0
+offset_bottom = -25.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/normal_font_size = 18
+text = "x3"
+
+[node name="Rare" parent="." groups=["card"] instance=ExtResource("3_g8v54")]
+position = Vector2(395, 150)
+scale = Vector2(2, 2)
+
+[node name="Coin" type="Sprite2D" parent="Rare"]
+texture_filter = 1
+position = Vector2(-7.5, -50)
+texture = ExtResource("4_06qyl")
+
+[node name="Price" type="RichTextLabel" parent="Rare"]
+offset_top = -55.0
+offset_right = 30.0
+offset_bottom = -25.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/normal_font_size = 18
+text = "x4"
+
+[node name="Trash" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(545, 150)
+scale = Vector2(2, 2)
+texture = ExtResource("5_y5lyk")
+
+[node name="Coin" type="Sprite2D" parent="Trash"]
+texture_filter = 1
+position = Vector2(-7.5, -50)
+texture = ExtResource("4_06qyl")
+
+[node name="Price" type="RichTextLabel" parent="Trash"]
+offset_top = -55.0
+offset_right = 30.0
+offset_bottom = -25.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/normal_font_size = 18
+text = "x5
+"
+
+[node name="Area2D" type="Area2D" parent="Trash"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash/Area2D"]
+scale = Vector2(2.5, 3.5)
+shape = SubResource("RectangleShape2D_xq0mo")
+
+[node name="Deck" type="Sprite2D" parent="."]
+position = Vector2(30, 435)
+texture = ExtResource("6_qi6f1")
+hframes = 7
+vframes = 5
+frame = 6
+
+[node name="Area2D" type="Area2D" parent="Deck"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D"]
+shape = SubResource("RectangleShape2D_5nsa1")
+
+[node name="Bank" type="Node2D" parent="."]
+position = Vector2(75, 455)
+
+[node name="Amount" type="RichTextLabel" parent="Bank"]
+offset_left = 10.0
+offset_right = 460.0
+offset_bottom = 30.0
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/normal_font_size = 18
+text = "x"
+
+[node name="Coin" type="Sprite2D" parent="Bank"]
+texture_filter = 1
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+texture = ExtResource("4_06qyl")
+
+[node name="CardName" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 225.0
+offset_right = 635.0
+offset_bottom = 265.0
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/normal_font_size = 20
+
+[node name="CardDescription" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 265.0
+offset_right = 635.0
+offset_bottom = 342.0
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/normal_font_size = 16
+
+[node name="Skip" type="Button" parent="."]
+offset_left = 540.0
+offset_top = 450.0
+offset_right = 635.0
+offset_bottom = 475.0
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/font_size = 18
+text = "Next Game"
+
+[node name="Options" type="Button" parent="."]
+offset_left = 283.0
+offset_top = 450.0
+offset_right = 358.0
+offset_bottom = 477.0
+theme = ExtResource("7_v4c8v")
+theme_override_font_sizes/font_size = 18
+text = "Options"
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+z_as_relative = false
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.258824, 0.129412, 0.211765, 1)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_omnam")
+bus = &"Music"
+
+[node name="Blip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_b22jm")
+bus = &"SFX"
+
+[connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="card_clicked" from="Common" to="." method="_on_card_clicked"]
+[connection signal="card_hovered" from="Common" to="." method="_on_card_hovered"]
+[connection signal="card_unhovered" from="Common" to="." method="_on_card_unhovered"]
+[connection signal="card_clicked" from="Uncommon" to="." method="_on_card_clicked"]
+[connection signal="card_hovered" from="Uncommon" to="." method="_on_card_hovered"]
+[connection signal="card_unhovered" from="Uncommon" to="." method="_on_card_unhovered"]
+[connection signal="card_clicked" from="Rare" to="." method="_on_card_clicked"]
+[connection signal="card_hovered" from="Rare" to="." method="_on_card_hovered"]
+[connection signal="card_unhovered" from="Rare" to="." method="_on_card_unhovered"]
+[connection signal="input_event" from="Trash/Area2D" to="." method="_on_trash_clicked"]
+[connection signal="mouse_entered" from="Trash/Area2D" to="." method="_on_trash_hovered"]
+[connection signal="mouse_exited" from="Trash/Area2D" to="." method="_on_trash_unhovered"]
+[connection signal="input_event" from="Deck/Area2D" to="." method="_on_deck_clicked"]
+[connection signal="mouse_entered" from="Deck/Area2D" to="." method="_on_deck_hovered"]
+[connection signal="mouse_exited" from="Deck/Area2D" to="." method="_on_deck_unhovered"]
+[connection signal="mouse_entered" from="Skip" to="." method="_on_skip_mouse_entered"]
+[connection signal="mouse_exited" from="Skip" to="." method="_on_skip_mouse_exited"]
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]

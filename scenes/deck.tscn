@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://brs8163wjsi6f"]
+
+[ext_resource type="Script" path="res://scripts/Deck.gd" id="1_2utrf"]
+[ext_resource type="Theme" uid="uid://1y7ptsr0yfcn" path="res://art/new_theme.tres" id="2_7la5e"]
+
+[node name="Deck" type="Node2D"]
+process_priority = 1
+script = ExtResource("1_2utrf")
+
+[node name="Confirm" type="Button" parent="."]
+visible = false
+offset_left = 273.0
+offset_top = 448.0
+offset_right = 368.0
+offset_bottom = 475.0
+theme = ExtResource("2_7la5e")
+theme_override_font_sizes/font_size = 18
+text = "Confirm"
+
+[node name="Delete" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 85.0
+offset_top = 25.0
+offset_right = 555.0
+offset_bottom = 60.0
+theme = ExtResource("2_7la5e")
+theme_override_font_sizes/normal_font_size = 24
+text = "Select a Card to Remove from Your Deck"
+
+[node name="View" type="RichTextLabel" parent="."]
+offset_left = 233.0
+offset_top = 25.0
+offset_right = 408.0
+offset_bottom = 60.0
+theme = ExtResource("2_7la5e")
+theme_override_font_sizes/normal_font_size = 24
+text = "View Your Deck"
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+z_as_relative = false
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.258824, 0.129412, 0.211765, 1)
+
+[node name="Skip" type="Button" parent="."]
+offset_left = 5.0
+offset_top = 450.0
+offset_right = 100.0
+offset_bottom = 475.0
+theme = ExtResource("2_7la5e")
+theme_override_font_sizes/font_size = 18
+text = "Return"
+
+[node name="CardName" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 325.0
+offset_right = 635.0
+offset_bottom = 365.0
+mouse_filter = 2
+theme = ExtResource("2_7la5e")
+theme_override_font_sizes/normal_font_size = 20
+
+[node name="CardDescription" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 369.0
+offset_right = 635.0
+offset_bottom = 446.0
+mouse_filter = 2
+theme = ExtResource("2_7la5e")
+theme_override_font_sizes/normal_font_size = 16
+
+[connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]

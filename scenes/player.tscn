@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://khkpunjetmbp"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_hwii6"]
+[ext_resource type="Texture2D" uid="uid://l7f13qasx8lj" path="res://art/deck.png" id="2_h2gna"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mh2e"]
+size = Vector2(50, 80)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_hwii6")
+
+[node name="DeckSprite" type="Sprite2D" parent="."]
+z_index = 5
+texture = ExtResource("2_h2gna")
+hframes = 7
+vframes = 5
+frame = 6
+
+[node name="Area2D" type="Area2D" parent="DeckSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSprite/Area2D"]
+shape = SubResource("RectangleShape2D_3mh2e")
+
+[connection signal="input_event" from="DeckSprite/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="DeckSprite/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="DeckSprite/Area2D" to="." method="_on_area_2d_mouse_exited"]

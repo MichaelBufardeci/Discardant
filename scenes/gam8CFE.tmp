@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0el23qyko1p8"]
+
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_xtkbl"]
+[ext_resource type="PackedScene" uid="uid://khkpunjetmbp" path="res://scenes/player.tscn" id="2_buy0m"]
+[ext_resource type="PackedScene" uid="uid://mp52eslok0vq" path="res://scenes/opponent.tscn" id="3_5jn35"]
+[ext_resource type="Texture2D" uid="uid://btuovv8p226p5" path="res://art/chalice.png" id="3_44i6n"]
+[ext_resource type="FontFile" uid="uid://dq8da2qbl78o7" path="res://art/PixelifySans[wght].ttf" id="5_2k0yt"]
+[ext_resource type="Texture2D" uid="uid://e0y5trihavep" path="res://art/arrows.png" id="5_5cs81"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_xtkbl")
+
+[node name="Player" parent="." groups=["players"] instance=ExtResource("2_buy0m")]
+position = Vector2(25, 440)
+
+[node name="OpponentL" parent="." groups=["players"] instance=ExtResource("3_5jn35")]
+position = Vector2(40, 25)
+rotation = 1.5708
+
+[node name="OpponentC" parent="." groups=["players"] instance=ExtResource("3_5jn35")]
+position = Vector2(615, 40)
+rotation = 3.14159
+
+[node name="OpponentR" parent="." groups=["players"] instance=ExtResource("3_5jn35")]
+position = Vector2(600, 455)
+rotation = 4.71239
+
+[node name="Chalice" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+texture_filter = 1
+position = Vector2(320, 240)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_44i6n")
+
+[node name="Arrows" type="Sprite2D" parent="."]
+position = Vector2(160, 40)
+texture = ExtResource("5_5cs81")
+vframes = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Arrows"]
+offset_left = -32.5
+offset_top = -10.0
+offset_right = 32.5
+offset_bottom = 10.0
+theme_override_colors/default_color = Color(1, 0.945098, 0.909804, 1)
+theme_override_fonts/normal_font = ExtResource("5_2k0yt")
+theme_override_font_sizes/normal_font_size = 12
+text = "Turn Order"
+
+[node name="CardText" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(400, 385)
+
+[node name="CardName" type="RichTextLabel" parent="CardText"]
+z_index = 3
+clip_contents = false
+offset_right = 160.0
+offset_bottom = 25.0
+theme_override_colors/default_color = Color(1, 0.945098, 0.909804, 1)
+theme_override_fonts/normal_font = ExtResource("5_2k0yt")
+theme_override_font_sizes/normal_font_size = 16
+
+[node name="CardDescription" type="RichTextLabel" parent="CardText"]
+z_index = 3
+offset_top = 25.0
+offset_right = 160.0
+offset_bottom = 95.0
+theme_override_colors/default_color = Color(1, 0.945098, 0.909804, 1)
+theme_override_fonts/normal_font = ExtResource("5_2k0yt")
+theme_override_font_sizes/normal_font_size = 12
+
+[node name="TextBackground" type="ColorRect" parent="CardText"]
+z_index = 1
+offset_right = 160.0
+offset_bottom = 95.0
+color = Color(0.494118, 0.145098, 0.32549, 1)
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+z_as_relative = false
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.258824, 0.129412, 0.211765, 1)
+
+[connection signal="card_drawn" from="Player" to="." method="_on_player_card_drawn"]
+[connection signal="card_played" from="OpponentL" to="." method="_on_opponent_card_played"]
+[connection signal="card_played" from="OpponentC" to="." method="_on_opponent_card_played"]
+[connection signal="card_played" from="OpponentR" to="." method="_on_opponent_card_played"]

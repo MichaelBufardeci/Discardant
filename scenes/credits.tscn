@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cglaunm87spit"]
+
+[ext_resource type="Theme" uid="uid://1y7ptsr0yfcn" path="res://art/new_theme.tres" id="1_dhnn2"]
+[ext_resource type="Script" path="res://scripts/Credits.gd" id="1_mwhe8"]
+
+[node name="credits" type="Node2D"]
+script = ExtResource("1_mwhe8")
+
+[node name="Title" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 635.0
+offset_bottom = 80.0
+theme = ExtResource("1_dhnn2")
+theme_override_font_sizes/normal_font_size = 48
+text = "Discardant"
+
+[node name="Credits" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 80.0
+offset_right = 635.0
+offset_bottom = 475.0
+theme = ExtResource("1_dhnn2")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Game, Art, and Programming by [color=#29adff][url=https://mbdc-game.itch.io]Michael Bufardeci[/url][/color].
+Music by [color=#29adff][url=https://abstractionmusic.com/]Abstraction[/url][/color].
+Made entirely in November 2023 for National Game Design Month.
+Created in [color=#29adff][url=https://godotengine.org]Godot[/url][/color].
+
+Thank you for playing!"
+
+[node name="Return" type="Button" parent="."]
+offset_left = 545.0
+offset_top = 450.0
+offset_right = 635.0
+offset_bottom = 477.0
+theme = ExtResource("1_dhnn2")
+theme_override_font_sizes/font_size = 18
+text = "Main Menu"
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+z_as_relative = false
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.258824, 0.129412, 0.211765, 1)
+
+[connection signal="meta_clicked" from="Credits" to="." method="_on_credits_meta_clicked"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

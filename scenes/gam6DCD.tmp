@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0el23qyko1p8"]
+
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_xtkbl"]
+[ext_resource type="PackedScene" uid="uid://khkpunjetmbp" path="res://scenes/player.tscn" id="2_buy0m"]
+[ext_resource type="PackedScene" uid="uid://mp52eslok0vq" path="res://scenes/opponent.tscn" id="3_5jn35"]
+[ext_resource type="Texture2D" uid="uid://btuovv8p226p5" path="res://art/chalice.png" id="3_44i6n"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_xtkbl")
+
+[node name="Player" parent="." instance=ExtResource("2_buy0m")]
+position = Vector2(26, 439)
+
+[node name="Opponent" parent="." instance=ExtResource("3_5jn35")]
+position = Vector2(614, 41)
+rotation = 3.14159
+
+[node name="Chalice" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+texture_filter = 1
+position = Vector2(320, 240)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_44i6n")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+z_as_relative = false
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.258824, 0.129412, 0.211765, 1)
+
+[connection signal="card_drawn" from="Player" to="." method="_on_player_card_drawn"]

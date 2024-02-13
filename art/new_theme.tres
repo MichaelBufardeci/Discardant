@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://1y7ptsr0yfcn"]
+
+[ext_resource type="FontFile" uid="uid://do81j2xrgpkmk" path="res://art/DotGothic16-Regular.ttf" id="1_uppsc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hly4o"]
+bg_color = Color(0.494118, 0.145098, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxkws"]
+bg_color = Color(0.494118, 0.145098, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3wmd"]
+bg_color = Color(0.458824, 0.27451, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktvci"]
+bg_color = Color(0.458824, 0.27451, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyepm"]
+bg_color = Color(0.494118, 0.145098, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm0xv"]
+bg_color = Color(0.458824, 0.27451, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp2aj"]
+bg_color = Color(0.458824, 0.27451, 0.396078, 1)
+
+[resource]
+default_font = ExtResource("1_uppsc")
+Button/colors/font_color = Color(1, 0.945098, 0.909804, 1)
+Button/colors/font_focus_color = Color(1, 0.945098, 0.909804, 1)
+Button/colors/font_hover_color = Color(1, 0.945098, 0.909804, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_hly4o")
+Button/styles/hover = SubResource("StyleBoxFlat_hxkws")
+Button/styles/normal = SubResource("StyleBoxFlat_l3wmd")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ktvci")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_qyepm")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_pm0xv")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_hp2aj")
